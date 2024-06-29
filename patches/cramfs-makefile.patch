@@ -1,0 +1,23 @@
+diff -rup cramfs-1.1-orig/GNUmakefile cramfs-1.1/GNUmakefile
+--- cramfs-1.1-orig/GNUmakefile	2002-02-23 00:52:41.000000000 +0000
++++ cramfs-1.1/GNUmakefile	2024-06-29 18:28:22.449629578 +0000
+@@ -3,10 +3,18 @@ CFLAGS = -W -Wall -O2 -g
+ CPPFLAGS = -I.
+ LDLIBS = -lz
+ PROGS = mkcramfs cramfsck
++PREFIX ?= usr/local
+ 
+ all: $(PROGS)
+ 
+ distclean clean:
+ 	rm -f $(PROGS)
+ 
+-.PHONY: all clean
++install: $(PROGS)
++	install -d -m 0755 $(DESTDIR)/$(PREFIX)/bin
++	install -m 0755 $(PROGS) $(DESTDIR)/$(PREFIX)/bin
++
++uninstall:
++	cd $(DESTDIR)/$(PREFIX)/bin && rm -f $(PROGS)
++
++.PHONY: all clean install uninstall

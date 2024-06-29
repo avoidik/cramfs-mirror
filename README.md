@@ -18,3 +18,17 @@ cramfs-1.1/mkcramfs.c:445: undefined reference to `major'
 ```
 
 Add `#include <sys/sysmacros.h>` to `mkcramfs.c` before other `#include` statements.
+
+## Installation
+
+```terminal
+$ curl -fsSLO https://github.com/avoidik/cramfs-mirror/raw/main/cramfs-1.1.tar.gz
+$ curl -sL https://raw.githubusercontent.com/avoidik/cramfs-mirror/main/cramfs-1.1.tar.gz.sha256 | sha256sum --check
+cramfs-1.1.tar.gz: OK
+$ tar -zxf cramfs-1.1.tar.gz
+$ cd cramfs-1.1/
+$ patch -p1 <<< $(curl -sL https://raw.githubusercontent.com/avoidik/cramfs-mirror/main/patches/cramfs-include.patch)
+$ patch -p1 <<< $(curl -sL https://raw.githubusercontent.com/avoidik/cramfs-mirror/main/patches/cramfs-makefile.patch)
+$ make
+$ sudo make install
+```

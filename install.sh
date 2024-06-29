@@ -7,3 +7,6 @@ patch -p1 <<< $(curl -sL https://raw.githubusercontent.com/avoidik/cramfs-mirror
 patch -p1 <<< $(curl -sL https://raw.githubusercontent.com/avoidik/cramfs-mirror/main/patches/cramfs-makefile.patch)
 make
 sudo make install
+cd ..
+rm -rf cramfs-1.1/
+rm -f cramfs-1.1.tar.gz

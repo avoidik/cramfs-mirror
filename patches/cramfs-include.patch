@@ -1,0 +1,11 @@
+diff -rup cramfs-1.1-orig/mkcramfs.c cramfs-1.1/mkcramfs.c
+--- cramfs-1.1-orig/mkcramfs.c	2002-02-20 08:03:32.000000000 +0000
++++ cramfs-1.1/mkcramfs.c	2024-06-29 18:05:17.227240434 +0000
+@@ -22,6 +22,7 @@
+  * If you change the disk format of cramfs, please update fs/cramfs/README.
+  */
+ 
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <stdio.h>
+ #include <sys/stat.h>
